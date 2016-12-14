@@ -1,0 +1,173 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="A page for exploring basic HTML documents">
+        <title>Adventure Game </title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="myscript.js"></script>
+    </head>
+    <body>
+    <style type="text/css" rel="stylesheet">
+        body {
+            background: #fff;
+        }
+        #container {
+            width: 940px;
+            margin: 0 auto;
+        }
+        @media only screen and (max-width: 768px) {
+            #container {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+<body>
+    <div id="container">
+
+        <h1 style="font-size:32px">Choose Your Own Adventure Game</h1>
+        <hr>
+        <br/>
+        <br/>
+
+        <h2>You are at home and you are beginning to get bored. Very bored. Your Mom says that you need to stop playing video games on your TV.  She also says, "Go do something else!" </h2>
+        <br/>
+        <!--Horizontal Tab-->
+        <div id="parentHorizontalTab">
+            <ul class="resp-tabs-list hor_1">
+                <li>Eat </li>
+                <li>Go outside </li>
+                <li>Read </li>
+            </ul>
+            <div class="resp-tabs-container hor_1">
+                <div>
+                    <p>
+                        <!--vertical Tabs-->
+
+                        <div id="ChildVerticalTab_1">
+                            <ul class="resp-tabs-list ver_1">
+                                <li>Eat </li>
+                                <li>Scream </li>
+                                <li>Cry </li>
+                                <li>Put it away </li>
+                            </ul>
+                            <div class="resp-tabs-container ver_1">
+                                <div>
+                                    <p>You go to the refrigerator and see a pineapple!  As you start to
+                                        eat it, your Mom says,"<br> Don't eat that! The magician Anuran charmed
+                                        it to make anyone that ate it not be able<br> to stop eating!"
+                                    </p>
+                                    <br>
+                                    <img src="pineapple.jpg" style="width:400px;height:400px;" >
+                            
+                                </div>
+                                <div>
+                                    <p>You scream at the fruit as if it were a rare and poisonous animal , probably wishing it would go away. It is still there.
+                                    </p>
+                                <br>
+                                    <img src="scream.png" style="width:440px;height:222px;" >
+                                
+                                </div>
+                                <div>
+                                    <p>You sob until you feel like obeying your mom, but pineapple is your favorite food!</p>
+                                  <br>
+                                 <img src="cry.jpg" style="width:400px;height:400px;" >
+                                </div>
+                                <div>
+                                    <p>You put it back in the refrigerator and settle for some candy your mom gave you a few days ago.</p>
+                                    <br>
+                                     <img src="candy.jpg" style="width:280px;height:440px;" >
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <p>choose your story</p>
+                </div>
+                <div>
+                    You run as fast as your legs can carry you. You run blindly into the street. A drunk driver accidently hits you and continues driving. You are now as flat as a pancake, dead as a doornail, and all of those other happy sayings.
+                    <br>
+                     <img src="car.png" style="width:640px;height:320px;" >
+                    <br>
+                    <p>sad ending</p>
+                </div>
+                <div>
+                    You go inside the library and read alot. You check out some books you didn't finish.
+                    <br>
+                     <img src="books.png" style="width:540px;height:220px;" >
+                    <br>
+                    <p>you are happy</p>
+                </div>
+            </div>
+        </div>
+        <div id="nested-tabInfo">
+            You have decided to <span class="tabName"></span>
+        </div>
+        
+        <div class="content">
+            <h2>For any support</h2> JD Stephenson
+            <br> My email: <a href="mailto:stepj917@newschool.edu" target="_blank">stepj917@newschool.edu</a>
+            <br>
+            <a href="http://www.cyoa.com/" target="_blank">Choose Your Own Adventure</a>
+            <br>
+
+        </div>
+
+        <footer>
+            Easy-developed by <a href="https://github.com/CreativeComputing2035/Final_Project_JD_Stephenson">JD</a>
+        </footer>
+        <br>
+        <br>
+        <br/>
+    </div>
+	
+	<!--Plug-in Initialisation-->
+	<script type="text/javascript">
+    $(document).ready(function() {
+        //Horizontal Tab
+        $('#parentHorizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+
+        // Child Tab
+        $('#ChildVerticalTab_1').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true,
+            tabidentify: 'ver_1', // The tab groups identifier
+            activetab_bg: '#fff', // background color for active tabs in this group
+            inactive_bg: '#F5F5F5', // background color for inactive tabs in this group
+            active_border_color: '#c1c1c1', // border color for active tabs heads in this group
+            active_content_border_color: '#5AB1D0' // border color for active tabs contect in this group so that it matches the tab head border
+        });
+
+        //Vertical Tab
+        $('#parentVerticalTab').easyResponsiveTabs({
+            type: 'vertical', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo2');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+    });
+</script>
+</body>
+</html>
